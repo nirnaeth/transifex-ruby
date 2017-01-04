@@ -91,6 +91,22 @@ resource.translation(:ja) # => Japanese Translation (if exists)
 ...
 ```
 
+### Submitting new content for translation of a particular Resource of a Project
+
+```ruby
+project_slug = 'ima_project'
+resource_slug = 'ima_resource'
+# https://docs.transifex.com/api/resources#uploading-and-downloading-translations
+new_content = {"content": <content of the file>.to_json}
+
+transifex = Transifex::Client.new
+project = transifex.project(project_slug) # => Transifex::Project object
+resource = project.resource(resource_slug) # => Transifex::Resource object
+resource.update_content(new_content)
+...
+```
+
+
 ### Retrieving the Language(s) of a particular Project
 
 ```ruby

@@ -23,5 +23,12 @@ module Transifex
       stats = client.get("/project/#{@project_slug}/resource/#{@slug}/stats/#{lang}")
       Transifex::Stats.new(stats).tap {|r| r.client = client }
     end
+
+    def update_content(content)
+      client.put(
+        "/project/#{@project_slug}/resource/#{@slug}/content/",
+        {content: content.to_json}.to_json
+      )
+    end
   end
 end
