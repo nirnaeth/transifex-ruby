@@ -97,7 +97,10 @@ resource.translation(:ja) # => Japanese Translation (if exists)
 project_slug = 'ima_project'
 resource_slug = 'ima_resource'
 # https://docs.transifex.com/api/resources#uploading-and-downloading-translations
-new_content = {"content": <content of the file>.to_json}
+new_content = {
+  "attribute_1"=>"value",
+  [...]
+}
 
 transifex = Transifex::Client.new
 project = transifex.project(project_slug) # => Transifex::Project object

@@ -17,6 +17,17 @@ module Transifex
       response.body
     end
 
+    def put(path, body, params = {})
+      response = connection.put do |request|
+        request.url build_path(:v2, path)
+        request.headers['Content-Type'] = 'application/json'
+        request.body = body
+        request.params.merge(params)
+      end
+
+      response.body
+    end
+
     private
 
     def build_path(version, path)
